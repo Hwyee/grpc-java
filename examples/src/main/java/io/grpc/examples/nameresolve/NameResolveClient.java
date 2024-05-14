@@ -17,9 +17,6 @@
 package io.grpc.examples.nameresolve;
 
 import io.grpc.*;
-import io.grpc.examples.helloworld.GreeterGrpc;
-import io.grpc.examples.helloworld.HelloReply;
-import io.grpc.examples.helloworld.HelloRequest;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;

@@ -1,7 +1,7 @@
 plugins {
     // Provide convenience executables for trying out the examples.
     id 'application'
-    id 'com.google.protobuf' version '0.9.4'
+//    id 'com.google.protobuf' version '0.9.4'
     // Generate IntelliJ IDEA's .idea & .iml project files
     id 'idea'
 }
@@ -37,34 +37,46 @@ dependencies {
     implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
 
     runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
-
+    implementation "io.grpc:protoc-gen-grpc-java:1.63.0"
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
     testImplementation "io.grpc:grpc-inprocess:${grpcVersion}"
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.mockito:mockito-core:4.4.0"
+
 }
 
-protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
-    plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
-    }
-    generateProtoTasks {
-        all()*.plugins { grpc {} }
-    }
-}
+//protobuf {
+//    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+//    plugins {
+//        grpc { artifact = "io.grpc:protoc-gen-grpc-java:1.63.0" }
+//    }
+//    generateProtoTasks {
+//        all()*.plugins { grpc {} }
+//        all().configureEach { task ->
+//            task.builtins {
+//                // Generates Python code
+////                python { }
+//
+//                // If you wish to avoid generating Java files:
+////                remove java
+//            }
+//        }
+//    }
+//
+//}
 
 // Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
-sourceSets {
-    main {
-        java {
-            srcDirs 'build/generated/source/proto/main/grpc'
-            srcDirs 'build/generated/source/proto/main/java'
-        }
-    }
-}
+//sourceSets {
+//    main {
+//        java {
+//            srcDirs 'build/generated/source/proto/main/grpc'
+//            srcDirs 'build/generated/source/proto/main/java'
+//        }
+//    }
+//}
 
-startScripts.enabled = false
+
+startScripts.enabled = false;
 
 // Creates start scripts for a class name and adds it to the distribution. The
 // base class name is used to name the task and scripts. For example, passed
